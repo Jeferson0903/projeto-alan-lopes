@@ -25,11 +25,10 @@ body {
 
 .container {
     width: 100%;
-    max-width: 500px;
+    min-height: 100vh;
     background: var(--branco);
-    box-shadow: 0 0 50px rgba(0,0,0,0.6);
     display: flex;
-    flex-direction: column;
+  flex-direction: column;
 }
 
 /* Header Institucional */
@@ -167,59 +166,42 @@ body {
 /* REGRA DE RESPONSIVIDADE PARA PC */
 @media (min-width: 1024px) {
     body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        margin: 0;
-        overflow-x: hidden;
-        background-color: var(--fundo-pagina); /* Usa o azul escuro nas laterais */
+        display: block; /* Remove o centralizador do body */
+        background-color: var(--branco); /* Fundo uniforme */
     }
 
     .container {
-        width: 90%;
-        max-width: 1150px;
-        min-height: 85vh; 
-        height: auto; 
-        display: flex;
-        flex-direction: row;
-        border-radius: 20px;
-        overflow: hidden;
-        margin: 40px 0; 
+        flex-direction: row; /* Coloca lado a lado no PC */
+        max-width: 100%;    /* Ocupa a largura total do monitor */
+        margin: 0;          /* Remove margens externas */
+        border-radius: 0;   /* Remove bordas arredondadas do card */
+        box-shadow: none;   /* Remove sombras laterais */
     }
 
     .header {
-        width: 45%;
+        width: 40%;         /* Lateral azul fixa */
+        min-height: 100vh;
+        position: fixed;    /* Deixa o perfil fixo enquanto o FAQ rola */
+        left: 0;
+        top: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 40px;
-        position: sticky; 
-        top: 0;
+        padding: 60px;
     }
 
     .conteudo-principal {
-        width: 55%;
-        padding: 40px;
+        width: 60%;         /* Área de conteúdo */
+        margin-left: 40%;   /* Empurra o conteúdo para fora do header fixo */
+        padding: 60px 80px; /* Espaçamento interno generoso */
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: #ffffff;
-    }
-
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out; /* Transição suave ao abrir */
-    }
-
-    .accordion-item.active .accordion-content {
-        max-height: 500px; /* Valor alto o suficiente para o texto */
-        padding: 15px 0;
     }
 
     .avatar-container {
-        width: 200px;
-        height: 200px;
+        width: 280px; /* Foto maior para aproveitar o espaço do PC */
+        height: 280px;
     }
 }
